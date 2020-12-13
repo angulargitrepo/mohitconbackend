@@ -1,4 +1,4 @@
-package com.mit.config;
+package com.mit;
 
 
 import org.springframework.context.annotation.Bean;

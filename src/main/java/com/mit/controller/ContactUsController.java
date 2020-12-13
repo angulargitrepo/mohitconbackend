@@ -12,45 +12,43 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/contactUs")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Slf4j
-public class NoteController {
+public class ContactUsController {
 
     @Autowired
     ContactUsRepository contactUsRepository;
 
-    @GetMapping("/notes")
+    @GetMapping("/getAllContactUs")
     public List<ContactUs> getAllNotes() {
         log.trace("A TRACE Message");
         return contactUsRepository.findAll();
     }
 
-    @PostMapping("/notes")
+    @PostMapping("/saveContactUs")
     public ContactUs createNote(@Valid @RequestBody ContactUs note) {
         return contactUsRepository.save(note);
     }
 
-    @GetMapping("/notes/{id}")
+    @GetMapping("/contactUs/{id}")
     public ContactUs getNoteById(@PathVariable(value = "id") Long noteId) throws Exception {
         return contactUsRepository.findById(noteId)
                 .orElseThrow(() -> new Exception("ContactUs Id : "+noteId +" not found"));
     }
 
-    @PutMapping("/notes/{id}")
+    @PutMapping("/contactUs/{id}")
     public ContactUs updateNote(@PathVariable(value = "id") Long noteId,
                            @Valid @RequestBody ContactUs noteDetails) throws Exception {
 
         ContactUs note = contactUsRepository.findById(noteId)
                 .orElseThrow(() -> new Exception("ContactUs Id : "+noteId +" not found"));
 
-        note.setTitle(noteDetails.getTitle());
-        note.setContent(noteDetails.getContent());
-
         ContactUs updatedNote = contactUsRepository.save(note);
         return updatedNote;
     }
 
-    @DeleteMapping("/notes/{id}")
+    @DeleteMapping("/contactUs/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long noteId) throws Exception {
         ContactUs note = contactUsRepository.findById(noteId)
                 .orElseThrow(() -> new Exception("ContactUs Id : "+noteId +" not found"));
