@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 
 
-nohup java -jar mohitconbackend/target/mohitconbackend-0.0.1-SNAPSHOT.jar > app.log 2>&1 </dev/null &
+nohup java -jar /home/ec2-user/projects/mohitconbackend/target/mohitconbackend-0.0.1-SNAPSHOT.jar > app.log 2>&1 </dev/null &
 
 MSG='Starting Spring boot application on 8080'
 APP=''
