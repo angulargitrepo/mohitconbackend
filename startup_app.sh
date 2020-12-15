@@ -18,7 +18,7 @@ for (( i=5; i>0; i--)); do
   echo -ne "${GREEN}${MSG}${YELLOW}${APP}\r"
 done
 
-cd /home/ec2-user/Projects/angularbootstrepdemo/dist/angularbootstrapdemo/
+cd /home/ec2-user/projects/angularbootstrepdemo/dist/angularbootstrapdemo/
 
 nohup angular-http-server -p 4200 > app.log 2>&1 </dev/null &
 
